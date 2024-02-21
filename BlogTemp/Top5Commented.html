@@ -1,0 +1,11 @@
+{% extends 'style.html'%}
+{%block 'block1'%}
+{% for blog in data %} 
+    <div>
+        <section>
+            <h3>Name of the Blog : {{blog.name}}</h3>
+            <p>Content : {{blog.content}}</p>
+        </section>
+{% endfor %}
+{%endblock%}
+            

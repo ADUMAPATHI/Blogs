@@ -1,0 +1,56 @@
+
+<html>
+{% extends 'style.html'%}
+{%block 'block1'%}
+<h3>Welcome to Blogs Page</h3>
+<body>
+    <div style="text-align: center;">
+        <form method = "POST" action = "AddBlog/">
+            {%csrf_token%}
+            <input type = "submit" value = "Post a Blog">
+        </form>
+    </div>
+    {% for blog in blogs %} 
+    <div>
+        <section>
+            <h3>{{blog.name}}</h3>
+            <p>Content : {{blog.content}}</p>
+            <span style = "text-transform:capitalize">Posted By : {{blog.author.username}}</span>
+            <br><br>
+            <form method = "POST" name = 'commentform'>
+                {%csrf_token%}
+                <input type = 'hidden' name = 'blog' value = "{{blog.name}}">
+                <input type = 'hidden' name = 'user' value = "{{blog.author.username}}">
+                <input type = 'text' name = 'comments' placeholder = addComments required>
+                <input type="submit" value = "postComment" >    
+            </form>
+            <form method="POST" >
+                {%csrf_token%}
+                <input type = 'hidden' name = 'blog' value = "{{blog.name}}">
+                <input type = 'hidden' name = 'user' value = "{{blog.author.username}}">
+                <input type="submit" value = 'LIKE' name = 'like'>
+                <input type="submit" value = 'DISLIKE' name = 'dislike'>
+            </form>
+            <form method = 'POST' action = 'History/'>
+                {%csrf_token%}
+                <input type = 'hidden' name = 'blog' value = "{{blog.name}}">
+                <input type="submit" value = 'CommentHistory' name = 'history'>
+            </form>
+            {% if blogname == blog.name and comment %}
+                <p>Comment Added !</p>
+            {% endif %}
+            {% if blogname == blog.name and like %}
+                <p>{{like}}!</p>
+            {% endif %}
+            
+        </section>
+
+    </div>
+    <br>
+
+{% endfor %}
+</body>
+
+
+{%endblock%}
+</html>

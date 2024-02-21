@@ -1,0 +1,20 @@
+{% extends 'style.html'%}
+{%block 'block1'%}
+<h4>Liked Blogs</h4>
+{% for blog in liked %} 
+    <div>
+        <section>
+            <h3>Name of the Blog : {{blog.name}}</h3>
+            <p>Content : {{blog.content}}</p>
+        </section>
+{% endfor %}
+<br><br>
+<h4>DisLiked Blogs</h4>
+{% for blog in disliked %} 
+    <div>
+        <section>
+            <h3>Name of the Blog : {{blog.name}}</h3>
+            <p>Content : {{blog.content}}</p>
+        </section>
+{% endfor %}
+{%endblock%}

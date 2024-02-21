@@ -1,0 +1,15 @@
+{% extends 'style.html'%}
+{%block 'block1'%}
+{%csrf_token%}
+<div>
+    <form method = "POST">
+        {%csrf_token%}
+        Enter your Blog Name:
+        <input type="text" name = "blogname" required><br><br>
+        Enter your Blog Content :
+        <input type="text" name = "blogcontent" required><br><br>
+        <input type="submit" name = "AddBlog" value = "Post">
+    </form>
+</div>
+{%endblock%}
+

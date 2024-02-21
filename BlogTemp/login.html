@@ -1,0 +1,17 @@
+                          
+{%block 'block1'%}
+<form method="POST" novalidate >
+    {%csrf_token%}
+    <table>
+        {{form.as_p}}
+    </table>
+        
+        <input type="submit" value="Login">
+</form>
+{%if messages %}
+    {% for message in messages %}
+        {{message}}
+    {% endfor %}
+{% endif %}
+<a href="signup">SignUp</a>
+{%endblock%}

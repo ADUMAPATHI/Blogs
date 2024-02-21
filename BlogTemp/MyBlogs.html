@@ -1,0 +1,15 @@
+
+{% extends 'style.html'%}
+{%block 'block1'%}
+{% for blog in blogs %} 
+    <div>
+        <section>
+            <h3>Name of the Blog : {{blog.blog.name}}</h3>
+            <p>Content : {{blog.blog.content}}</p>
+            <p>Likes : {{blog.likes}}</p>
+            <p>DisLikes : {{blog.dislikes}}</p>
+            <p>Comments : {{blog.comments}}</p>
+        </section>
+{% endfor %}
+{%endblock%}
+            

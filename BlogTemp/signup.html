@@ -1,0 +1,17 @@
+
+<form method="POST" >
+    {%csrf_token%}
+    <table>
+      {{us.as_p}}
+    </table>
+        
+    <input type="submit" value="Create accont">
+
+</form>
+{% if messages %}
+  {% for message in messages %}
+    {{message}}
+  {% endfor %}
+{% endif %}
+<br>
+<a href="/">Login</a>

@@ -1,0 +1,12 @@
+{% extends 'style.html'%}
+{%block 'block1'%}
+<h4>Liked Blogs</h4>
+{% for response in data %} 
+    <div>
+        <section>
+            <h3>Name of the Blog : {{response.blog.name}}</h3>
+            <p>Content : {{response.blog.content}}</p>
+
+        </section>
+{% endfor %}
+{%endblock%}
