@@ -17,4 +17,3 @@ urlpatterns = [
     path('CommentHistoryOfParticularAuthor/',views.CommentHistoryOfParticularAuthor,name='CommentHistoryOfParticularAuthor'),
 
 ]
-
