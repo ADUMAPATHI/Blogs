@@ -79,9 +79,13 @@ WSGI_APPLICATION = 'BlogDetails.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE' : 'django.db.backends.postgresql',
+        'NAME' : 'natureblend-database',
+        'HOST' : 'natureblend-db-server.postgres.database.azure.com',
+        'USER' : 'zemghayyns',
+        'PASSWORD': '5Al0WBhXr$qldy7Q',
+        'PORT' : '5432'
     }
 }
 
