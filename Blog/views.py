@@ -5,13 +5,14 @@ from django import forms
 from django.contrib import messages
 from django.shortcuts import redirect, render
 from django.urls import reverse
-from Blog.models import Blogs, Comment, LogUser, Response
+from Blog.models import Blogs, Comment, LogUser, Response_
 from Blog.forms import UserLogForm, UserSignForm
 from .ResponseModels import ResponseBlogs
+from rest_framework.response import Response
 from django.db.models import Count
 
 def login(request):
-    return HttpResponse("working fine")#Response({"Message":"its working"})
+    return Response({"Message":"its working"})
     if request.method == 'POST':
         form = UserLogForm(request.POST)
         if form.is_valid():
@@ -73,7 +74,7 @@ def ViewBlogs(request):
         blog = Blogs.objects.get(name = blogname)
         dtnow = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         like ='Liked the blog'
-        r1 = Response(blog = blog,user = user, like_or_not = True,response_date = dtnow)
+        r1 = Response_(blog = blog,user = user, like_or_not = True,response_date = dtnow)
         r1.save()
     elif request.method=='POST' and 'dislike' in request.POST:
         username = request.session["username"]
@@ -82,7 +83,7 @@ def ViewBlogs(request):
         blog = Blogs.objects.get(name = blogname)
         dtnow = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         like ='DisLiked the blog'
-        r1 = Response(blog = blog,user = user, like_or_not = False,response_date = dtnow)
+        r1 = Response_(blog = blog,user = user, like_or_not = False,response_date = dtnow)
         r1.save()
     obj = Blogs.objects.all()
     return render(request,'Blogs.html',{'blogs':obj,'blogname':blogname,'comment':comments,'like':like})                                  
@@ -111,7 +112,7 @@ def MyBlogs(request):
     lst = []
     for obj  in objs:
         comment1 = Comment.objects.filter(blog = obj)
-        response1 = Response.objects.filter(blog = obj)
+        response1 = Response_.objects.filter(blog = obj)
         likes = len([res.like_or_not for res in response1 if res.like_or_not])
         dislike = len(response1)-likes
         r1 = ResponseBlogs(blog = obj,likes = likes,dislikes = dislike,comments = len(comment1))
@@ -140,7 +141,7 @@ def Top5LikedAndDisLiked(request):
 def Recent5LikedBlogs(request):
     username = request.session["username"]
     user = LogUser.objects.get(username = username)
-    objs = Response.objects.filter(user= user,like_or_not = True).order_by('-response_date')[:5]
+    objs = Response_.objects.filter(user= user,like_or_not = True).order_by('-response_date')[:5]
     return render(request,'Recent5LikedBlogs.html',{"data":objs})
 
 def CommentHistory(request):

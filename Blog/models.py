@@ -20,7 +20,7 @@ class Comment(models.Model):
     created_date   = models.DateTimeField()
     modified_date  = models.DateTimeField()
 
-class Response(models.Model):
+class Response_(models.Model):
     blog           = models.ForeignKey(Blogs,on_delete = models.CASCADE)
     user           = models.ForeignKey(LogUser,on_delete = models.CASCADE)
     like_or_not    = models.BooleanField()
