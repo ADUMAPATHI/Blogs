@@ -16,6 +16,7 @@ distlib==0.3.6
 Django==4.2.2
 django-rest-swagger==2.2.0
 djangorestframework==3.14.0
+djangorestframework >3.8
 docutils==0.20.1
 drf-yasg==1.21.7
 exceptiongroup==1.2.0
