@@ -10,7 +10,9 @@ from Blog.forms import UserLogForm, UserSignForm
 from .ResponseModels import ResponseBlogs
 from rest_framework.response import Response
 from django.db.models import Count
+from rest_framework.decorators import api_view
 
+@api_view(["GET"])
 def login(request):
     return Response({"Message":"its working"})
     if request.method == 'POST':
