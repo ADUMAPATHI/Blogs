@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from Blog.models import LogUser,Blogs,Comment,Response
+from Blog.models import LogUser,Blogs,Comment,Response_
 
 # Register your models here.
 class UserAdmin(admin.ModelAdmin):
@@ -8,4 +8,4 @@ class UserAdmin(admin.ModelAdmin):
 admin.site.register(LogUser,UserAdmin)
 admin.site.register(Blogs)
 admin.site.register(Comment)
-admin.site.register(Response)
+admin.site.register(Response_)
