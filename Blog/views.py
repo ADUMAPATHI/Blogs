@@ -14,7 +14,6 @@ from rest_framework.decorators import api_view
 
 @api_view(["GET"])
 def login(request):
-    return Response({"Message":"its working"})
     if request.method == 'POST':
         form = UserLogForm(request.POST)
         if form.is_valid():
