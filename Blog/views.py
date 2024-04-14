@@ -11,6 +11,7 @@ from .ResponseModels import ResponseBlogs
 from django.db.models import Count
 
 def login(request):
+    return Response({"Message":"its working"})
     if request.method == 'POST':
         form = UserLogForm(request.POST)
         if form.is_valid():
